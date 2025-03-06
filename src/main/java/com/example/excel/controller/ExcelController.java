@@ -1,7 +1,5 @@
 package com.example.excel.controller;
 
-import com.example.excel.domain.Schedule;
-import com.example.excel.repository.ScheduleRepository;
 import com.example.excel.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -18,13 +16,11 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class ExcelController {
 
-    private final ScheduleRepository scheduleRepository;
     private final ScheduleService scheduleService;
 
     @GetMapping()
     public  void exportExcel(@RequestParam int contentId, HttpServletResponse response) {
-        Schedule data = scheduleRepository.findByContentId(contentId);
-        Workbook workbook = scheduleService.createExcel(data);
+        Workbook workbook = scheduleService.createExcel(contentId);
         try {
             response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             response.setHeader("Content-Disposition", "attachment; filename=reservations.xlsx");
