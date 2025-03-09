@@ -19,8 +19,8 @@ public class ExcelController {
     private final ScheduleService scheduleService;
 
     @GetMapping()
-    public  void exportExcel(@RequestParam int contentId, HttpServletResponse response) {
-        Workbook workbook = scheduleService.createExcel(contentId);
+    public  void exportExcel(@RequestParam String startTime, @RequestParam int contentId, HttpServletResponse response) {
+        Workbook workbook = scheduleService.createExcel(startTime,contentId);
         try {
             response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             response.setHeader("Content-Disposition", "attachment; filename=reservations.xlsx");

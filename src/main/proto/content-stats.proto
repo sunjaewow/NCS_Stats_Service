@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package contentStats;
+
+option java_multiple_files = true;
+option java_package = "com.example.excel";
+option java_outer_classname = "ContentStatsProto";
+
+service ContentStatsService {
+  rpc GetContentStats (ContentStatsRequest) returns (ContentStatsResponseList);
+}
+
+message ContentStatsRequest {
+  string start_time = 1;
+  uint32 content_id = 2;
+}
+
+message ContentStatsResponse {
+  string start_time = 1;
+  int32 ad_cnt = 2;
+  int32 cd_cnt = 3;
+}
+
+message ContentStatsResponseList {
+  repeated ContentStatsResponse responses = 1;
+}
