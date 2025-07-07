@@ -6,7 +6,7 @@
 
 역할 : 통계 서비스 담당
 
-기술 스택 : Spring Boot, Apache PoI, Spring Cloud Netflix Eureka, MySQL
+기술 스택 : Java, Spring Boot, Apache PoI, Spring Cloud Netflix Eureka, MySQL
 
 ---
 
