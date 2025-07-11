@@ -4,7 +4,7 @@ import com.example.excel.domain.Schedule;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -18,7 +18,7 @@ import java.util.TreeMap;
 public class ExcelService {
 
     public Workbook createExcel(Schedule schedule) {
-        Workbook workbook = new XSSFWorkbook();
+        Workbook workbook = new SXSSFWorkbook();
         for (YearMonth month : schedule.getData().keySet()) {
             Sheet sheet = workbook.createSheet(month.toString());
             Row headerRow = sheet.createRow(0);
